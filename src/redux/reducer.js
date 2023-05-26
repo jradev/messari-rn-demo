@@ -1,23 +1,30 @@
-import { ADD_FAVORITE, SET_ASSETS } from "./action";
+import { ADD_FAVORITE, SELECT_ASSET, SET_ASSETS } from "./action";
 
 
 const initialState = {
   assets: [],
-  favorites: []
+  favorites: [],
+  asset: {}
 };
 
 const appReducer = (state = initialState, action) => {
   switch (action.type) {
+    case SELECT_ASSET: {
+        return {
+            ...state,
+            asset: action.payload
+        };
+    }
     case SET_ASSETS: {
         return {
             ...state,
-            assets: [ ...state.assets, action.payload]
+            assets: action.payload
         };
     }
     case ADD_FAVORITE: {
       return {
         ...state,
-        favorites: [ ...state.favorites, action.payload]
+        favorites: action.payload
       };
     }
     default:

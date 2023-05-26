@@ -1,27 +1,49 @@
 
 import { Text, View } from 'react-native';
+import { FlashList, useFlatListBenchmark } from "@shopify/flash-list";
 import styles from './styles';
 import { useEffect } from 'react';
 import { getAssets } from '../../service/request';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import AssetItem from '../../components/asset-item';
+import { setAssets } from '../../redux/action';
+import { uniqArray } from '../../utils/helper';
 
 export default function AssetsScreen(props){
     const assets = useSelector((store) => store.assets);
+    const dispatch = useDispatch();
+    // console.log(assets)
+
     useEffect(() => {
-        // getData();
+        // dispatch(setAssets([]))
+        getData();
     }, []);
 
+    // useEffect(() => {
+
+    // },[assets])
+
     const getData = async () => {
-        const response = await getAssets();
+        const response = await getAssets({ 'with-metrics': '' });
         const result = await response.json();
-        console.log('qwe')
+
+        if(result.data){
+            let newSet = uniqArray(assets.concat(result.data))
+            dispatch(setAssets(newSet))
+        }
         console.log(JSON.stringify(result.data))
     }
     
 
     return (
       <View style={styles.container}>
-        <Text>Assets</Text>
+        <FlashList
+        renderItem={({ item }) => {
+            return (<AssetItem item={item} />);
+        }}
+        estimatedItemSize={120}
+        data={assets}
+        />
       </View>
     );
 }

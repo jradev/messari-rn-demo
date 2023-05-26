@@ -35,7 +35,7 @@ export default function AppNavigation() {
   return (
     <NavigationContainer>
       <Tab.Navigator screenOptions={{ headerShown: false }}>
-        <Tab.Screen name="Assets" component={AssetsStackScreen} />
+        <Tab.Screen name="Home" component={AssetsStackScreen} />
         <Tab.Screen name="Favorites" component={FavoritesStackScreen} />
       </Tab.Navigator>
     </NavigationContainer>
