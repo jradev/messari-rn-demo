@@ -31,8 +31,6 @@ export default function AssetViewScreen(props){
             const response = await getAssetTimeSeries(asset?.symbol);
             const result = await response.json();
             let dataset = {};
-            console.log('dataset!');
-            console.log(JSON.stringify(result.data))
             if(result.data){
                 dataset = result.data;
             }else{
