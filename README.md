@@ -14,9 +14,6 @@
 <img src="/img/3.png" width="200"/> 
 </p>
 
-
-<p>App is created with mock data due to inacessible API from https://messari.io/ Assets</p>
-
 ## Requirements
 
 - Home feed of assets
@@ -24,4 +21,7 @@
 - Name & price in USD item details
 - Line Chart
 - Asset details
-- Infinite scroll (not tested due to API issues)
+- Infinite scroll
+
+
+<p>App is created with mock data due to inacessible API from https://messari.io/ Assets using with-metrics flag</p>
