@@ -6,7 +6,7 @@
 ## Usage
 
 - `npx react-native run-ios` For iOS
-- `npx react-native android` For Android
+- `npx react-native run-android` For Android
 
 <p float="left">
 <img src="/img/1.png" width="200"/>
