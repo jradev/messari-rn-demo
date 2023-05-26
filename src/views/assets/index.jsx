@@ -30,7 +30,7 @@ export default function AssetsScreen(props){
     const getData = async (page = 1) => {
         setIsLoading(true);
         try{
-            const response = await getAssets({ 'with-metrics': '', 'page': page });
+            const response = await getAssets({ 'page': page });
             const result = await response.json();
             
             if(result.data){
