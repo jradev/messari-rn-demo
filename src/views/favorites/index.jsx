@@ -17,10 +17,18 @@ export default function FavoritesScreen(props){
       <View style={styles.container}>
         <FlashList
         renderItem={({ item }) => {
-            return (<AssetItem item={item} />);
+            return (<AssetItem item={{
+                ...item,
+                favorite: true
+            }} />);
         }}
         estimatedItemSize={120}
         data={favorites}
+        ListEmptyComponent={
+        <View style={styles.emptyContainer}>
+            <Text style={styles.empty}>No favorite added yet.</Text>
+        </View>
+        }
         />
       </View>
     );

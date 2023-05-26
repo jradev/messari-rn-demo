@@ -34,6 +34,10 @@ const styles = StyleSheet.create({
         color: Colors.primary,
         fontSize: 20,
     },
+    imageContainer: {
+        elevation: 999,
+        zIndex: 999
+    },
     image: {
         height: 24,
         width: 24

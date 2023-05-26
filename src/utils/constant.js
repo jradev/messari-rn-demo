@@ -4,4 +4,4 @@ export const Colors = {
 };
 
 
-export const API_URL = `https://data.messari.io/api/v2`;
+export const API_URL = `https://data.messari.io/api/v1`;

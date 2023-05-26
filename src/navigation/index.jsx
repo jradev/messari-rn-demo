@@ -13,7 +13,7 @@ function AssetsStackScreen() {
   return (
     <AssetsStack.Navigator initialRouteName="AssetsScreen">
       <AssetsStack.Screen name="AssetsScreen" options={{headerShown: false}} component={AssetsScreen} />
-      <AssetsStack.Screen name="AssetViewScreen" options={{title: ''}}   component={AssetViewScreen} />
+      <AssetsStack.Screen name="AssetViewScreen" options={{title: '', headerBackTitle: 'Back'}}   component={AssetViewScreen} />
     </AssetsStack.Navigator>
   );
 }
@@ -24,7 +24,7 @@ function FavoritesStackScreen() {
   return (
     <FavoritesStack.Navigator options={{headerShown: false}}>
       <FavoritesStack.Screen name="FavoritesScreen" options={{headerShown: false}} component={FavoritesScreen} />
-      <FavoritesStack.Screen name="AssetViewScreen" options={{title: ''}} component={AssetViewScreen} />
+      <FavoritesStack.Screen name="AssetViewScreen" options={{title: '', headerBackTitle: 'Back'}} component={AssetViewScreen} />
     </FavoritesStack.Navigator>
   );
 }
