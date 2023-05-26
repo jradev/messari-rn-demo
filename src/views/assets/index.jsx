@@ -34,7 +34,10 @@ export default function AssetsScreen(props){
             const result = await response.json();
             
             if(result.data){
-                let newSet = uniqArray(assets.concat(result.data))
+                let newSet = uniqArray(assets.concat(result.data));
+                if(page === 1){
+                    newSet = result.data;
+                }
                 dispatch(setAssets(newSet))
             }else{
                 dispatch(setAssets(assetsMockData.data))
@@ -52,6 +55,11 @@ export default function AssetsScreen(props){
         setCurrentPage(e => newPage);
         getData(newPage);
     }
+
+    const onRefresh = async () => {
+        setCurrentPage(1);
+        getData(1);
+    }
     
 
     return (
@@ -64,6 +72,8 @@ export default function AssetsScreen(props){
         keyExtractor={(item) => `${item.id}`}
         data={assets}
         onEndReached={() => onEndReached()}
+        onRefresh={() => onRefresh()}
+        refreshing={isLoading}
         onEndReachedThreshold={0.6}
         ListFooterComponent={isLoading ? <ActivityIndicator /> : null}
         />
