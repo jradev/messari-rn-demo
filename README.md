@@ -21,7 +21,7 @@
 - Name & price in USD item details
 - Line Chart
 - Asset details
-- Infinite scroll
+- Infinite scroll & pull to refresh
 
 
 <p>App is created with mock data due to inacessible API from https://messari.io/ Assets using with-metrics flag</p>
