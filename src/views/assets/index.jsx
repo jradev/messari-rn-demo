@@ -40,7 +40,7 @@ export default function AssetsScreen(props){
                 }
                 dispatch(setAssets(newSet))
             }else{
-                dispatch(setAssets(assetsMockData.data))
+                // dispatch(setAssets(assetsMockData.data))
             }
             setIsLoading(false)
             console.log(JSON.stringify(result.data))

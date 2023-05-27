@@ -1,5 +1,5 @@
 
-import { Dimensions, Text, View } from 'react-native';
+import { ActivityIndicator, Dimensions, Text, View } from 'react-native';
 import { LineChart } from "react-native-chart-kit";
 import styles from './styles';
 import { useEffect, useState } from 'react';
@@ -10,6 +10,7 @@ import { getAssetMetrics, getAssetTimeSeries } from '../../service/request';
 export default function AssetViewScreen(props){
 
     const asset = useSelector(store => store.asset);
+    const [isLoading, setIsLoading] = useState(true);
 
     const [chartInfo, setChartInfo] = useState({
         label: [],
@@ -34,7 +35,7 @@ export default function AssetViewScreen(props){
             if(result.data){
                 dataset = result.data;
             }else{
-                dataset = chartData;                
+                // dataset = chartData;                
             }
 
             const chartLabels = dataset?.values?.map((item) => item[0]?.split('T')[1]?.replace(':00:00Z', '')).splice(0,15);
@@ -43,8 +44,9 @@ export default function AssetViewScreen(props){
                 data: chartValues,
                 label: chartLabels
             });
+            setIsLoading(false);
         }catch(e){
-
+            setIsLoading(false);
         }
 
     }
@@ -57,11 +59,15 @@ export default function AssetViewScreen(props){
             if(result.data){
                 setMarketInfo(result.data)
             }else{
-                setMarketInfo(marketData)                
+                // setMarketInfo(marketData)                
             }
         }catch(e){
 
         }
+    }
+
+    if(isLoading){
+        return <ActivityIndicator/>
     }
 
     return (
